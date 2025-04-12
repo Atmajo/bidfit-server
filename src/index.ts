@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import routes from "./routes/index";
 import limiter from "./middleware/limiter";
+import { initializeServices } from "./lib/intitialize-services";
 
 // Load environment variables
 dotenv.config();
@@ -33,4 +34,9 @@ app.get("/", (req: Request, res: Response) => {
 // Start server
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+  
+  initializeServices().catch((error) => {
+    console.error("Failed to initialize services:", error);
+    process.exit(1);
+  });
 });

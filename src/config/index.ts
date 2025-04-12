@@ -14,10 +14,14 @@ export const envs = {
     host: REDIS_HOST || "127.0.0.1",
     port: REDIS_PORT || 6379,
     password: REDIS_PASSWORD || undefined,
-    upstash: process.env.UPSTASH_URI!
+    upstash: process.env.UPSTASH_URI!,
   },
   app: {
     port: PORT || 3000,
   },
-  jwtsecret: process.env.JWT_SECRET!
+  smtp: {
+    user: process.env.SMTP_USER!,
+    pass: process.env.SMTP_PASS!,
+  },
+  jwtsecret: process.env.JWT_SECRET!,
 };

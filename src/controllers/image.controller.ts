@@ -13,12 +13,10 @@ export const imageUploader = async (req: Request, res: Response) => {
 
     const files = await readdir("public");
 
-    res
-      .status(200)
-      .send({
-        message: "Image uploaded successfully",
-        url: `/${files[files.length - 1]}`,
-      });
+    res.status(200).send({
+      message: "Image uploaded successfully",
+      url: `/${files[files.length - 1]}`,
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send({ message: "Internal server error" });
